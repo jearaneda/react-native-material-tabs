@@ -163,7 +163,7 @@ const MaterialTabs: React.FC<Props> = ({
                 activeTextStyle={selectedIndex === idx && activeTextStyle}
                 tabHeight={barHeight}
                 tabPadding={tabPadding}
-                tabWidth={!scrollable ? tabWidth : barWidth * 0.3}
+                tabWidth={tabPadding}
                 uppercase={uppercase}
                 inActiveTextColor={inactiveTextColor}
               />
@@ -173,7 +173,7 @@ const MaterialTabs: React.FC<Props> = ({
           <Indicator
             color={indicatorColor}
             value={indicatorPosition}
-            tabWidth={!scrollable ? tabWidth : barWidth * 0.3}
+            tabWidth={tabPadding}
           />
         </ScrollView>
       </Bar>
