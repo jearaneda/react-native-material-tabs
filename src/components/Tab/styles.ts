@@ -13,6 +13,7 @@ export const TabBody = styled.View`
   justify-content: center;
   padding-left: 8px;
   padding-right: 8px;
+  ${(props: TabBodyProps) => props.tabHeight}
 `;
 
 interface TabButtonProps {
