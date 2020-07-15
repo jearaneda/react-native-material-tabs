@@ -22,6 +22,7 @@ interface Props extends Pick<ScrollViewProps, 'keyboardShouldPersistTaps'> {
   selectedIndex: number;
   barColor: string;
   barHeight: number;
+  tabPadding: number;
   activeTextColor: string;
   indicatorColor: string;
   inactiveTextColor: string;
@@ -53,6 +54,7 @@ const MaterialTabs: React.FC<Props> = ({
   indicatorColor,
   barColor,
   tabBodyStyle,
+  tabPadding,
 }) => {
   const [tabWidth, setTabWidth] = useState(0);
   const [barWidth, setBarWidth] = useState(0);
@@ -129,6 +131,7 @@ const MaterialTabs: React.FC<Props> = ({
     scrollable,
     selectedIndex,
     tabWidth,
+    
   ]);
 
   return (
@@ -159,6 +162,7 @@ const MaterialTabs: React.FC<Props> = ({
                 textStyle={textStyle}
                 activeTextStyle={selectedIndex === idx && activeTextStyle}
                 tabHeight={barHeight}
+                tabPadding={tabPadding}
                 tabWidth={!scrollable ? tabWidth : barWidth * 0.3}
                 uppercase={uppercase}
                 inActiveTextColor={inactiveTextColor}

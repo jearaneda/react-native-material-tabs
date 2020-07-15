@@ -5,6 +5,7 @@ import Button from '../Touchable';
 
 interface TabBodyProps {
   tabHeight: number;
+  tabPadding: number;
   tabBodyStyle: StyleProp<ViewStyle>;
 }
 
@@ -12,9 +13,8 @@ export const TabBody = styled.View`
   height: ${(props: TabBodyProps) => props.tabHeight};
   align-items: center;
   justify-content: center;
-  padding-left: 8px;
-  padding-right: 8px;
-  ${(props: TabBodyProps) => props.tabBodyStyle}
+  padding-left: ${(props: TabBodyProps) => props.tabPadding}px;
+  padding-right: ${(props: TabBodyProps) => props.tabPadding}px;
 `;
 
 interface TabButtonProps {
