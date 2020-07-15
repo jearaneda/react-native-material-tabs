@@ -15,6 +15,7 @@ interface TabProps {
   textStyle: StyleProp<TextStyle>;
   uppercase: boolean;
   activeTextStyle?: StyleProp<TextStyle>;
+  tabBodyStyle: StyleProp<TextStyle>;
   onPress(): void;
 }
 
