@@ -7,6 +7,7 @@ import {
   StyleProp,
   TextStyle,
   I18nManager,
+  ViewStyle,
 } from 'react-native';
 
 import Tab from './Tab';
@@ -29,7 +30,7 @@ interface Props extends Pick<ScrollViewProps, 'keyboardShouldPersistTaps'> {
   activeTextStyle: StyleProp<TextStyle>;
   items: ContentType[];
   uppercase: boolean;
-  tabBodyStyle: StyleProp<TextStyle>;
+  tabBodyStyle: StyleProp<ViewStyle>;
   onChange(index: number): void;
 }
 

@@ -1,10 +1,11 @@
-import { Platform } from 'react-native';
+import { Platform, StyleProp, ViewStyle } from 'react-native';
 import styled from 'styled-components/native';
 
 import Button from '../Touchable';
 
 interface TabBodyProps {
   tabHeight: number;
+  tabBodyStyle: StyleProp<ViewStyle>;
 }
 
 export const TabBody = styled.View`
@@ -13,7 +14,7 @@ export const TabBody = styled.View`
   justify-content: center;
   padding-left: 8px;
   padding-right: 8px;
-  ${(props: TabBodyProps) => props.tabHeight}
+  ${(props: TabBodyProps) => props.tabBodyStyle}
 `;
 
 interface TabButtonProps {
