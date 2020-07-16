@@ -5,7 +5,6 @@ import Button from '../Touchable';
 
 interface TabBodyProps {
   tabHeight: number;
-  tabPadding: number;
   tabBodyStyle: StyleProp<ViewStyle>;
 }
 

@@ -13,7 +13,7 @@ const Bar = styled(Animated.View)`
   height: ${constants.indicatorHeight};
   width: ${(props: BarProps) => props.tabWidth};
   position: absolute;
-  left: ${(props: BarProps) => props.tabWidth/2};
+  left: ${(props: BarProps) => props.tabWidth/4};
   bottom: 0;
   background-color: ${(props: BarProps) => props.color};
 `;

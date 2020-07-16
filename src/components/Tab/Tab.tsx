@@ -9,7 +9,6 @@ interface TabProps {
   content: ContentType;
   tabWidth: number;
   tabHeight: number;
-  tabPadding: number;
   activeTextColor: string;
   inActiveTextColor: string;
   active?: boolean;
@@ -28,7 +27,6 @@ const Tab = ({
   content,
   inActiveTextColor,
   tabWidth,
-  tabPadding,
   tabHeight,
   textStyle,
   uppercase,
@@ -38,7 +36,7 @@ const Tab = ({
 
   return (
     <TabButton onPress={onPress} tabWidth={tabWidth}>
-      <TabBody tabHeight={tabHeight} tabPadding={tabPadding}>
+      <TabBody tabHeight={tabHeight}>
         {typeof content === 'string' ? (
           <TabText
             color={color}

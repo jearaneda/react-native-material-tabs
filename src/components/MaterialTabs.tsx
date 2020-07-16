@@ -22,7 +22,6 @@ interface Props extends Pick<ScrollViewProps, 'keyboardShouldPersistTaps'> {
   selectedIndex: number;
   barColor: string;
   barHeight: number;
-  tabPadding: number;
   activeTextColor: string;
   indicatorColor: string;
   inactiveTextColor: string;
@@ -31,7 +30,8 @@ interface Props extends Pick<ScrollViewProps, 'keyboardShouldPersistTaps'> {
   activeTextStyle: StyleProp<TextStyle>;
   items: ContentType[];
   uppercase: boolean;
-  tabBodyStyle: StyleProp<ViewStyle>;
+  indicatorLength: number;
+  tabProportion: number;
   onChange(index: number): void;
 }
 
@@ -53,8 +53,8 @@ const MaterialTabs: React.FC<Props> = ({
   uppercase,
   indicatorColor,
   barColor,
-  tabBodyStyle,
-  tabPadding,
+  indicatorLength,
+  tabProportion,
 }) => {
   const [tabWidth, setTabWidth] = useState(0);
   const [barWidth, setBarWidth] = useState(0);
@@ -75,7 +75,7 @@ const MaterialTabs: React.FC<Props> = ({
 
   useEffect(() => {
     const getAnimateValues = () => {
-      const scrollValue = !scrollable ? tabWidth : barWidth * 0.3;
+      const scrollValue = !scrollable ? tabWidth : barWidth * tabProportion;
 
       const indicator = I18nManager.isRTL
         ? -selectedIndex * scrollValue
@@ -152,7 +152,6 @@ const MaterialTabs: React.FC<Props> = ({
           <TabTrack barHeight={barHeight}>
             {items.map((item, idx) => (
               <Tab
-                tabBodyStyle={tabBodyStyle}
                 allowFontScaling={allowFontScaling}
                 content={item}
                 key={getKeyForTab(item) || undefined}
@@ -162,8 +161,7 @@ const MaterialTabs: React.FC<Props> = ({
                 textStyle={textStyle}
                 activeTextStyle={selectedIndex === idx && activeTextStyle}
                 tabHeight={barHeight}
-                tabPadding={tabPadding}
-                tabWidth={!scrollable ? tabWidth : barWidth * 0.3}
+                tabWidth={!scrollable ? tabWidth : barWidth * tabProportion}
                 uppercase={uppercase}
                 inActiveTextColor={inactiveTextColor}
               />
@@ -173,7 +171,7 @@ const MaterialTabs: React.FC<Props> = ({
           <Indicator
             color={indicatorColor}
             value={indicatorPosition}
-            tabWidth={!scrollable ? tabWidth : barWidth * 0.15}
+            tabWidth={!scrollable ? tabWidth : barWidth * 0.1}
           />
         </ScrollView>
       </Bar>
@@ -192,6 +190,8 @@ MaterialTabs.defaultProps = {
   scrollable: false,
   uppercase: true,
   keyboardShouldPersistTaps: 'never',
+  indicatorLength: 60,
+  tabProportion: 0.3,
 };
 
 export default MaterialTabs;
