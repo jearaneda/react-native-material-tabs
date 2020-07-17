@@ -30,8 +30,10 @@ interface Props extends Pick<ScrollViewProps, 'keyboardShouldPersistTaps'> {
   activeTextStyle: StyleProp<TextStyle>;
   items: ContentType[];
   uppercase: boolean;
-  indicatorLength: number;
   tabProportion: number;
+  indicatorProportion: number;
+  indicatorStyles: StyleProp<ViewStyle>,
+  tabStyles: StyleProp<ViewStyle>,
   onChange(index: number): void;
 }
 
@@ -53,8 +55,10 @@ const MaterialTabs: React.FC<Props> = ({
   uppercase,
   indicatorColor,
   barColor,
-  indicatorLength,
   tabProportion,
+  indicatorProportion,
+  indicatorStyles,
+  tabStyles,
 }) => {
   const [tabWidth, setTabWidth] = useState(0);
   const [barWidth, setBarWidth] = useState(0);
@@ -171,7 +175,9 @@ const MaterialTabs: React.FC<Props> = ({
           <Indicator
             color={indicatorColor}
             value={indicatorPosition}
-            tabWidth={!scrollable ? tabWidth : barWidth * 0.1}
+            tabWidth={!scrollable ? tabWidth : barWidth * tabProportion}
+            indicatorProportion={indicatorProportion}
+            indicatorStyles={indicatorStyles}
           />
         </ScrollView>
       </Bar>
@@ -190,8 +196,9 @@ MaterialTabs.defaultProps = {
   scrollable: false,
   uppercase: true,
   keyboardShouldPersistTaps: 'never',
-  indicatorLength: 60,
   tabProportion: 0.3,
+  indicatorProportion: 0.5,
+  indicatorStyles: {},
 };
 
 export default MaterialTabs;
